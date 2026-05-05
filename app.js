@@ -1,11 +1,35 @@
 // =====================
+// USUARIOS (LOGIN SIMPLE)
+// =====================
+const users = [
+  { user: "admin", pass: "1234", role: "admin" },
+  { user: "editor", pass: "1234", role: "editor" },
+  { user: "viewer", pass: "1234", role: "viewer" }
+];
+
+// LOGIN FUNCTION (para login.html)
+function login() {
+  const user = document.getElementById("user")?.value;
+  const pass = document.getElementById("pass")?.value;
+  const error = document.getElementById("error");
+
+  const found = users.find(u => u.user === user && u.pass === pass);
+
+  if (found) {
+    localStorage.setItem("session", JSON.stringify(found));
+    window.location.href = "index.html";
+  } else {
+    if (error) error.textContent = "Usuario o contraseña incorrectos";
+  }
+}
+// =====================
 // STATE
 // =====================
 let hotelesPorZona = {};
 let listaUnidades = [];
 
 // =====================
-// INIT GLOBAL
+// INIT
 // =====================
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -13,16 +37,19 @@ window.addEventListener("DOMContentLoaded", () => {
   initToggle();
   initForm();
   initFiltros();
-
+  cargarDatos();
+  initHoteles();
 });
 
 // =====================
-// SESIÓN (LOGIN EXTERNO)
+// 🔐 SESIÓN (LOGIN)
 // =====================
 function validarSesion() {
-  const session = JSON.parse(localStorage.getItem("session"));
 
-  if (!session && location.pathname.includes("app.html")) {
+  const session = safeJSON(localStorage.getItem("session"));
+
+  // 🔥 bloqueo total si no hay login
+  if (!session && location.pathname.includes("app")) {
     location.href = "login.html";
     return;
   }
@@ -45,21 +72,25 @@ function logout() {
 // =====================
 function aplicarPermisos(role) {
 
-  if (role === "viewer") {
-    document.querySelectorAll("button").forEach(b => {
-      if (b.id !== "toggleFormulario") b.style.display = "none";
-    });
+  const btnExport = document.getElementById("btnExportar");
+  const form = document.getElementById("formulario");
 
-    document.getElementById("formulario")?.remove();
+  if (role === "viewer") {
+
+    document.querySelectorAll(".btn-ingresado, .btn-despachado")
+      .forEach(b => b.style.display = "none");
+
+    if (form) form.style.display = "none";
+    if (btnExport) btnExport.style.display = "none";
   }
 
   if (role === "editor") {
-    document.getElementById("btnExportar")?.style.display = "none";
+    if (btnExport) btnExport.style.display = "none";
   }
 }
 
 // =====================
-// TOGGLE FORM (FIX REAL)
+// TOGGLE FORM
 // =====================
 function initToggle() {
   const btn = document.getElementById("toggleFormulario");
@@ -77,27 +108,62 @@ function initToggle() {
 }
 
 // =====================
-// CARGA JSON
+// CARGA DATOS
 // =====================
-fetch("hoteles1.json")
-  .then(r => r.json())
-  .then(data => {
-    hotelesPorZona = data;
-    cargarZonas();
-    cargarFiltroZonas();
-  });
+function cargarDatos() {
 
-fetch("unidades.json")
-  .then(r => r.json())
-  .then(data => {
-    listaUnidades = data;
-    cargarUnidades();
+  fetch("hoteles1.json")
+    .then(r => r.json())
+    .then(data => {
+      hotelesPorZona = data;
+      cargarZonas();
+      cargarFiltroZonas();
+    })
+    .catch(err => console.error("hoteles error:", err));
+
+  fetch("unidades.json")
+    .then(r => r.json())
+    .then(data => {
+      listaUnidades = data;
+      cargarUnidades();
+    })
+    .catch(err => console.error("unidades error:", err));
+}
+
+// =====================
+// 🔥 HOTELS FIX
+// =====================
+function initHoteles() {
+
+  const zonaSelect = document.getElementById("zona");
+  const hotelInput = document.getElementById("hotel");
+  const datalist = document.getElementById("listaHoteles");
+
+  if (!zonaSelect || !hotelInput || !datalist) return;
+
+  zonaSelect.addEventListener("change", () => {
+
+    const zona = zonaSelect.value;
+
+    datalist.innerHTML = "";
+    hotelInput.value = "";
+
+    if (!zona || !hotelesPorZona[zona]) return;
+
+    hotelesPorZona[zona].forEach(h => {
+      const option = document.createElement("option");
+      option.value = h.nombre;
+      datalist.appendChild(option);
+    });
+
   });
+}
 
 // =====================
 // FORM
 // =====================
 function initForm() {
+
   const form = document.getElementById("formulario");
   if (!form) return;
 
@@ -144,6 +210,7 @@ function initFiltros() {
 }
 
 function aplicarFiltros() {
+
   const zona = val("filtroZona");
   const cuenta = val("filtroCuenta");
 
@@ -162,9 +229,10 @@ function aplicarFiltros() {
 }
 
 // =====================
-// CARGAS UI
+// LOADERS
 // =====================
 function cargarUnidades() {
+
   const sel = document.getElementById("unidad");
   if (!sel) return;
 
@@ -179,6 +247,7 @@ function cargarUnidades() {
 }
 
 function cargarZonas() {
+
   const sel = document.getElementById("zona");
   if (!sel) return;
 
@@ -193,6 +262,7 @@ function cargarZonas() {
 }
 
 function cargarFiltroZonas() {
+
   const sel = document.getElementById("filtroZona");
   if (!sel) return;
 
@@ -211,4 +281,8 @@ function cargarFiltroZonas() {
 // =====================
 function val(id) {
   return document.getElementById(id)?.value || "";
+}
+
+function safeJSON(v) {
+  try { return JSON.parse(v); } catch { return null; }
 }
