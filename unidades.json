@@ -62,5 +62,7 @@
   {"unidad":"N-56","proveedor":"ABORDO"},
   {"unidad":"N-57","proveedor":"ABORDO"},
   {"unidad":"N-58","proveedor":"ABORDO"},
-  {"unidad":"N-59","proveedor":"ABORDO"}
+  {"unidad":"N-59","proveedor":"ABORDO"},
+
+  {"unidad":"RT-259","proveedor":"MASTER SHUTTLE"}
 ]

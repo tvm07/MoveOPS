@@ -37,10 +37,6 @@
 <!-- FORMULARIO -->
 <section class="card form-section">
 
-     <button id="toggleFormulario" type="button" class="btn-toggle">
-      Agregar unidad
-     </button>
-
   <div id="contenedorFormulario" class="form-collapsible">
 
     <form id="formulario" class="form-linea">
@@ -86,7 +82,7 @@
         </select>
       </div>
 
-      <button type="submit">Guardar</button>
+      <button type="submit">Agregar unidad</button>
 
     </form>
 
@@ -101,7 +97,10 @@
     <h2>Unidades en lanzadera</h2>
 
     <div class="filtros">
-      <select id="filtroZona"></select>
+
+      <select id="filtroZona">
+        <option value="">Todas las zonas</option>
+      </select>
 
       <select id="filtroCuenta">
         <option value="">Todas</option>
@@ -112,6 +111,7 @@
       </select>
 
       <button id="btnExportar">Excel</button>
+
     </div>
   </div>
 

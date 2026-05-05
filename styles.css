@@ -10,6 +10,7 @@ body {
     background: #f1f5f9;
     margin: 0;
     color: #0f172a;
+    font-size: 14px;
 }
 
 /* ===================== */
@@ -18,18 +19,19 @@ body {
 header {
     background: #0f172a;
     color: white;
-    padding: 14px 24px;
+    padding: 12px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 10;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 h1 {
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
 }
 
@@ -37,91 +39,82 @@ h1 {
 /* LAYOUT */
 /* ===================== */
 main {
-    padding: 20px;
+    padding: 14px;
     max-width: 1300px;
     margin: auto;
 }
 
 /* ===================== */
-/* CARDS */
+/* SECCIONES (NO TARJETAS PESADAS) */
 /* ===================== */
-.card,
-.form-collapsible {
-    background: white;
-    padding: 18px;
-    border-radius: 14px;
-    box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+.form-section,
+.table-section {
+    background: transparent;
+    padding: 8px 0;
+    border-left: 3px solid transparent;
+}
+
+/* separadores suaves */
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 /* ===================== */
-/* FORMULARIO EN LÍNEA CORRECTO */
+/* FORMULARIO EN UNA SOLA LÍNEA */
 /* ===================== */
-
 .form-linea {
     display: flex;
-    gap: 12px;
-    align-items: flex-end;
+    gap: 10px;
     flex-wrap: wrap;
+    align-items: flex-end;
+    background: white;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* cada campo en columna (LABEL ARRIBA) */
+/* cada campo */
 .form-linea .field {
     display: flex;
     flex-direction: column;
-    min-width: 140px;
     flex: 1;
+    min-width: 140px;
 }
 
-/* label siempre arriba */
-.form-linea label {
-    display: block;
-    font-size: 11px;
-    margin-bottom: 6px;
-    color: #64748b;
-    font-weight: 500;
-}
-
-/* inputs consistentes */
-.form-linea select,
-.form-linea input {
-    width: 100%;
-    padding: 9px;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    outline: none;
-    background: #fff;
-}
-
-/* botón alineado abajo */
-.form-linea button {
-    height: 38px;
-    padding: 0 14px;
-    white-space: nowrap;
-}
-
-/* labels */
+/* labels ARRIBA */
 .form-linea label {
     font-size: 11px;
     margin-bottom: 4px;
     color: #64748b;
-    font-weight: 500;
 }
 
-/* inputs */
-select,
-input {
-    padding: 10px;
+/* inputs compactos */
+.form-linea select,
+.form-linea input {
+    padding: 8px;
     border: 1px solid #e2e8f0;
-    border-radius: 10px;
+    border-radius: 8px;
     outline: none;
-    transition: 0.2s;
+    font-size: 13px;
     background: #fff;
 }
 
-select:focus,
-input:focus {
+.form-linea select:focus,
+.form-linea input:focus {
     border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    box-shadow: 0 0 0 2px rgba(37,99,235,0.12);
+}
+
+/* botón */
+.form-linea button {
+    height: 36px;
+    padding: 0 14px;
+    white-space: nowrap;
 }
 
 /* ===================== */
@@ -131,65 +124,51 @@ button {
     background: #2563eb;
     color: white;
     border: none;
-    padding: 10px 14px;
-    border-radius: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: 0.2s ease;
-    font-weight: 500;
+    transition: 0.2s;
+    font-size: 13px;
 }
 
 button:hover {
     background: #1d4ed8;
-    transform: translateY(-1px);
 }
 
-/* botones secundarios */
-.btn-ingresado {
-    background: #22c55e;
-}
-
-.btn-ingresado:hover {
-    background: #16a34a;
-}
-
-.btn-despachado {
-    background: #ef4444;
-}
-
-.btn-despachado:hover {
-    background: #dc2626;
-}
-
-.btn-toggle {
-    background: #334155;
-}
+/* secundarios */
+.btn-ingresado { background: #22c55e; }
+.btn-despachado { background: #ef4444; }
+.btn-toggle { background: #334155; }
 
 /* ===================== */
 /* FILTROS */
 /* ===================== */
 .filtros {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
-    margin: 12px 0;
     align-items: center;
 }
 
+.filtros select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    font-size: 13px;
+}
+
 /* ===================== */
-/* TABLE MODERNA */
+/* TABLA LIMPIA */
 /* ===================== */
 .table-container {
     overflow-x: auto;
-    border-radius: 14px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 900px;
     background: white;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
 }
 
 thead {
@@ -198,13 +177,9 @@ thead {
 }
 
 th, td {
-    padding: 11px;
+    padding: 9px;
     text-align: center;
-    font-size: 13px;
-}
-
-tbody tr {
-    transition: 0.15s;
+    font-size: 12.5px;
 }
 
 tbody tr:nth-child(even) {
@@ -218,17 +193,9 @@ tbody tr:hover {
 /* ===================== */
 /* ESTADOS */
 /* ===================== */
-.estado-vencido {
-    background: #fee2e2 !important;
-}
-
-.estado-alerta {
-    background: #fef9c3 !important;
-}
-
-.estado-ok {
-    background: #dcfce7 !important;
-}
+.estado-vencido { background: #fee2e2 !important; }
+.estado-alerta { background: #fef9c3 !important; }
+.estado-ok { background: #dcfce7 !important; }
 
 .estado-ingresado {
     opacity: 0.55;
@@ -243,65 +210,93 @@ tbody tr:hover {
 }
 
 /* ===================== */
-/* LOGIN */
+/* LOGIN CONSISTENTE */
 /* ===================== */
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: radial-gradient(circle at top, #e2e8f0, #f1f5f9);
+    background: #f1f5f9;
+    padding: 16px;
 }
 
 .login-box {
     background: white;
-    padding: 28px;
-    border-radius: 16px;
-    width: 340px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    padding: 24px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 340px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     text-align: center;
 }
 
 .login-box h2 {
-    margin-bottom: 18px;
-    font-size: 20px;
-    color: #0f172a;
+    font-size: 18px;
+    margin-bottom: 16px;
 }
 
 .login-box input {
     width: 100%;
-    padding: 11px;
-    margin: 8px 0;
+    padding: 10px;
+    margin: 6px 0;
     border: 1px solid #e2e8f0;
-    border-radius: 10px;
-}
-
-.login-box button {
-    width: 100%;
-    margin-top: 10px;
+    border-radius: 8px;
 }
 
 .error {
     color: #ef4444;
-    font-size: 13px;
+    font-size: 12px;
     margin-top: 8px;
 }
 
 /* ===================== */
-/* SECCIONES */
+/* RESPONSIVE */
 /* ===================== */
-.section-title {
+@media (max-width: 768px) {
+
+    .form-linea .field {
+        min-width: 100%;
+    }
+
+    .filtros {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+.form-linea {
+    align-items: flex-start;
+}
+
+/* convierte tus field-inline en columna real */
+.form-linea .field-inline {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+    flex-direction: column;
+    flex: 1;
+    min-width: 140px;
 }
 
-.form-section {
-    margin-bottom: 20px;
-    border-left: 4px solid #2563eb;
+/* fuerza labels arriba y alineados */
+.form-linea .field-inline label {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 4px;
+    font-size: 11px;
+    color: #64748b;
 }
 
-.table-section {
-    border-left: 4px solid #0f172a;
+/* inputs consistentes */
+.form-linea .field-inline select,
+.form-linea .field-inline input {
+    width: 100%;
 }

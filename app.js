@@ -34,7 +34,6 @@ let listaUnidades = [];
 window.addEventListener("DOMContentLoaded", () => {
 
   validarSesion();
-  initToggle();
   initForm();
   initFiltros();
   cargarDatos();
@@ -87,24 +86,6 @@ function aplicarPermisos(role) {
   if (role === "editor") {
     if (btnExport) btnExport.style.display = "none";
   }
-}
-
-// =====================
-// TOGGLE FORM
-// =====================
-function initToggle() {
-  const btn = document.getElementById("toggleFormulario");
-  const form = document.getElementById("contenedorFormulario");
-
-  if (!btn || !form) return;
-
-  btn.addEventListener("click", () => {
-    form.classList.toggle("hidden");
-
-    btn.textContent = form.classList.contains("hidden")
-      ? "➕ Agregar unidad"
-      : "➖ Ocultar formulario";
-  });
 }
 
 // =====================
