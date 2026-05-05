@@ -10,136 +10,133 @@
 <!-- Excel -->
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js" defer></script>
 
-<!-- JS principal (SIEMPRE defer) -->
+<!-- App -->
 <script src="app.js" defer></script>
 </head>
 
 <body>
 
-<header>
-    <h1>Control de lanzadera</h1>
+<!-- HEADER -->
+<header class="app-header">
 
-    <!-- Usuario -->
+  <div class="brand">
+    <h1>MoveOPS</h1>
+    <small>Control en vivo de lanzadera</small>
+  </div>
+
+  <div class="user-area">
     <span id="userInfo"></span>
+    <button class="btn-logout" onclick="logout()">Cerrar sesión</button>
+  </div>
 
-    <!-- Logout -->
-    <button onclick="logout()" class="btn-logout">
-        Cerrar sesión
-    </button>
 </header>
+
 
 <main>
 
-<!-- BOTÓN TOGGLE -->
-<button id="toggleFormulario" class="btn-toggle">
-    ➕ Agregar unidad
-</button>
-
 <!-- FORMULARIO -->
-<div id="contenedorFormulario" class="card form-collapsible hidden">
+<section class="card form-section">
 
-    <form id="formulario">
+     <button id="toggleFormulario" type="button" class="btn-toggle">
+      Agregar unidad
+     </button>
 
-        <div class="form-grid">
+  <div id="contenedorFormulario" class="form-collapsible">
 
-            <h3 class="full">Agregar unidad</h3>
+    <form id="formulario" class="form-linea">
 
-            <div class="field">
-                <label>Unidad</label>
-                <select id="unidad" required></select>
-            </div>
+      <div class="field-inline">
+        <label>Unidad</label>
+        <select id="unidad" required></select>
+      </div>
 
-            <div class="field">
-                <label>Hora servicio</label>
-                <input type="time" id="hora" required>
-            </div>
+      <div class="field-inline">
+        <label>Hora</label>
+        <input type="time" id="hora" required>
+      </div>
 
-            <div class="field">
-                <label>Zona</label>
-                <select id="zona" required></select>
-            </div>
+      <div class="field-inline">
+        <label>Zona</label>
+        <select id="zona" required></select>
+      </div>
 
-            <div class="field">
-                <label>Hotel</label>
-                <input type="text" id="hotel" list="listaHoteles" placeholder="Buscar hotel..." required>
-                <datalist id="listaHoteles"></datalist>
-            </div>
+      <div class="field-inline">
+        <label>Hotel</label>
+        <input type="text" id="hotel" list="listaHoteles" required>
+        <datalist id="listaHoteles"></datalist>
+      </div>
 
-            <div class="field">
-                <label>Cuenta</label>
-                <select id="cuenta">
-                    <option value="Nexus">Nexus</option>
-                    <option value="Nexus DV">Nexus RF</option>
-                    <option value="Consolidados">Consolidados</option>
-                    <option value="Abordo">Abordo</option>
-                </select>
-            </div>
+      <div class="field-inline">
+        <label>Cuenta</label>
+        <select id="cuenta">
+          <option value="Nexus">Nexus</option>
+          <option value="Nexus DV">Nexus RF</option>
+          <option value="Consolidados">Consolidados</option>
+          <option value="Abordo">Abordo</option>
+        </select>
+      </div>
 
-            <div class="field">
-                <label>Tipo servicio</label>
-                <select id="servicio">
-                    <option value="SALIDA">Salida</option>
-                    <option value="LLEGADA">Llegada</option>
-                    <option value="INTERZONA">Interzona</option>
-                    <option value="ABIERTO">Abierto</option>
-                </select>
-            </div>
+      <div class="field-inline">
+        <label>Servicio</label>
+        <select id="servicio">
+          <option value="SALIDA">Salida</option>
+          <option value="LLEGADA">Llegada</option>
+          <option value="INTERZONA">Interzona</option>
+          <option value="ABIERTO">Abierto</option>
+        </select>
+      </div>
 
-            <button class="full" type="submit">
-                Agregar unidad
-            </button>
-
-        </div>
+      <button type="submit">Guardar</button>
 
     </form>
 
-</div>
+  </div>
+</section>
 
-<!-- TITULO -->
-<h2>Unidades activas</h2>
 
-<!-- FILTROS -->
-<div class="filtros">
+<!-- LISTA -->
+<section class="card table-section">
 
-    <select id="filtroZona">
-        <option value="">Todas las zonas</option>
-    </select>
+  <div class="section-title">
+    <h2>Unidades en lanzadera</h2>
 
-    <select id="filtroCuenta">
-        <option value="">Todas las cuentas</option>
+    <div class="filtros">
+      <select id="filtroZona"></select>
+
+      <select id="filtroCuenta">
+        <option value="">Todas</option>
         <option value="Nexus">Nexus</option>
-        <option value="Nexus DV">Nexus RF</option>
+        <option value="Nexus DV">Nexus DV</option>
         <option value="Consolidados">Consolidados</option>
         <option value="Abordo">Abordo</option>
-    </select>
+      </select>
 
-    <button id="btnExportar">
-        Descargar Excel
-    </button>
+      <button id="btnExportar">Excel</button>
+    </div>
+  </div>
 
-</div>
-
-<!-- TABLA -->
-<div class="table-container">
-<table id="tablaRegistros">
-    <thead>
+  <div class="table-container">
+    <table id="tablaRegistros">
+      <thead>
         <tr>
-            <th>#</th>
-            <th>Registro</th>
-            <th>Unidad</th>
-            <th>Servicio</th>
-            <th>Zona</th>
-            <th>Hotel</th>
-            <th>Cuenta</th>
-            <th>Tipo</th>
-            <th>Tiempo</th>
-            <th>Trayecto asignado</th>
-            <th>Acciones</th>
+          <th>#</th>
+          <th>Registro</th>
+          <th>Unidad</th>
+          <th>Hora</th>
+          <th>Zona</th>
+          <th>Hotel</th>
+          <th>Cuenta</th>
+          <th>Tipo</th>
+          <th>Tiempo</th>
+          <th>Trayecto</th>
+          <th>Acciones</th>
         </tr>
-    </thead>
-    <tbody></tbody>
-</table>
-</div>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+</section>
 
 </main>
 
