@@ -1,3 +1,94 @@
+// =====================
+// USUARIOS (LOGIN)
+// =====================
+const users = [
+  { user: "admin", pass: "1234", role: "admin" },
+  { user: "editor", pass: "1234", role: "editor" },
+  { user: "viewer", pass: "1234", role: "viewer" }
+];
+
+// =====================
+// LOGIN
+// =====================
+function login() {
+  const user = document.getElementById("user").value;
+  const pass = document.getElementById("pass").value;
+
+  const found = users.find(u => u.user === user && u.pass === pass);
+
+  if (found) {
+    localStorage.setItem("session", JSON.stringify(found));
+    window.location.href = "app.html";
+  } else {
+    document.getElementById("error").innerText =
+      "Usuario o contraseña incorrectos";
+  }
+}
+
+// =====================
+// SESIÓN
+// =====================
+function getSession() {
+  try {
+    return JSON.parse(localStorage.getItem("session"));
+  } catch {
+    return null;
+  }
+}
+
+const session = getSession();
+
+if (window.location.pathname.includes("app.html")) {
+  if (!session) {
+    window.location.href = "login.html";
+  } else {
+    aplicarPermisos(session.role);
+    mostrarUsuario(session);
+  }
+}
+
+// =====================
+// MOSTRAR USUARIO
+// =====================
+function mostrarUsuario(session) {
+  const el = document.getElementById("userInfo");
+  if (!el) return;
+
+  el.textContent = `Usuario: ${session.user} (${session.role})`;
+}
+
+// =====================
+// PERMISOS
+// =====================
+function aplicarPermisos(role) {
+
+  const isViewer = role === "viewer";
+  const isEditor = role === "editor";
+
+  if (isViewer) {
+    document.querySelectorAll(".btn-ingresado, .btn-despachado")
+      .forEach(b => b.style.display = "none");
+
+    document.getElementById("formulario")?.style.display = "none";
+    document.getElementById("btnExportar")?.style.display = "none";
+  }
+
+  if (isEditor) {
+    document.getElementById("btnExportar")?.style.display = "none";
+  }
+}
+
+// =====================
+// LOGOUT
+// =====================
+function logout() {
+  localStorage.removeItem("session");
+  window.location.href = "login.html";
+}
+
+// =====================
+// VARIABLES
+// =====================
 let hotelesPorZona = {};
 let listaUnidades = [];
 
@@ -39,22 +130,28 @@ fetch("unidades.json")
   });
 
 // =====================
-// FORM TOGGLE (🔴 FIX PRINCIPAL)
+// 🔥 TOGGLE FORM (FIX DEFINITIVO)
 // =====================
-document.addEventListener("DOMContentLoaded", () => {
+function initToggleFormulario() {
   const btn = document.getElementById("toggleFormulario");
   const form = document.getElementById("contenedorFormulario");
 
-  if (btn && form) {
-    btn.addEventListener("click", () => {
-      form.classList.toggle("hidden");
-
-      btn.textContent = form.classList.contains("hidden")
-        ? "➕ Agregar unidad"
-        : "➖ Ocultar formulario";
-    });
+  if (!btn || !form) {
+    console.warn("Toggle no encontrado");
+    return;
   }
-});
+
+  btn.addEventListener("click", () => {
+    form.classList.toggle("hidden");
+
+    btn.textContent = form.classList.contains("hidden")
+      ? "➕ Agregar unidad"
+      : "➖ Ocultar formulario";
+  });
+}
+
+// ejecución segura (EVITA TODOS LOS BUGS)
+window.addEventListener("load", initToggleFormulario);
 
 // =====================
 // UNIDADES
@@ -76,7 +173,6 @@ function cargarUnidades() {
 // =====================
 function cargarZonas() {
   const zonaSelect = document.getElementById("zona");
-
   zonaSelect.innerHTML = '<option value="">Selecciona zona</option>';
 
   Object.keys(hotelesPorZona).forEach(zona => {
@@ -203,14 +299,16 @@ function actualizarTiempos() {
     fila.dataset.tiempo = segundos;
     celdaTiempo.textContent = formatearTiempo(segundos);
 
+    fila.classList.remove("estado-ingresado", "estado-vencido", "estado-alerta", "estado-ok");
+
     if (fila.dataset.estado === "despachado") {
-      fila.className = "estado-ingresado";
+      fila.classList.add("estado-ingresado");
       return;
     }
 
-    if (segundos <= 600) fila.className = "estado-vencido";
-    else if (segundos <= 1200) fila.className = "estado-alerta";
-    else fila.className = "estado-ok";
+    if (segundos <= 600) fila.classList.add("estado-vencido");
+    else if (segundos <= 1200) fila.classList.add("estado-alerta");
+    else fila.classList.add("estado-ok");
   });
 
   ordenarTabla();
@@ -296,7 +394,7 @@ document.getElementById("formulario")?.addEventListener("submit", function(e) {
 });
 
 // =====================
-// FILTROS EVENTOS
+// EVENTOS FILTROS
 // =====================
 ["filtroZona", "filtroCuenta"].forEach(id => {
   document.getElementById(id)?.addEventListener("change", aplicarFiltros);
