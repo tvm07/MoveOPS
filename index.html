@@ -7,10 +7,10 @@
 
 <link rel="stylesheet" href="styles.css">
 
-<!-- Librería Excel -->
+<!-- Excel -->
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js" defer></script>
 
-<!-- Tu JS (IMPORTANTE: defer evita errores de DOM) -->
+<!-- JS principal (SIEMPRE defer) -->
 <script src="app.js" defer></script>
 </head>
 
@@ -19,7 +19,7 @@
 <header>
     <h1>Control de lanzadera</h1>
 
-    <!-- Usuario logueado (lo llena JS) -->
+    <!-- Usuario -->
     <span id="userInfo"></span>
 
     <!-- Logout -->
@@ -30,7 +30,7 @@
 
 <main>
 
-<!-- BOTÓN TOGGLE FORMULARIO -->
+<!-- BOTÓN TOGGLE -->
 <button id="toggleFormulario" class="btn-toggle">
     ➕ Agregar unidad
 </button>
@@ -95,7 +95,7 @@
 
 </div>
 
-<!-- TÍTULO -->
+<!-- TITULO -->
 <h2>Unidades activas</h2>
 
 <!-- FILTROS -->
@@ -121,24 +121,24 @@
 
 <!-- TABLA -->
 <div class="table-container">
-    <table id="tablaRegistros">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Registro</th>
-                <th>Unidad</th>
-                <th>Servicio</th>
-                <th>Zona</th>
-                <th>Hotel</th>
-                <th>Cuenta</th>
-                <th>Tipo</th>
-                <th>Tiempo</th>
-                <th>Trayecto asignado</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+<table id="tablaRegistros">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Registro</th>
+            <th>Unidad</th>
+            <th>Servicio</th>
+            <th>Zona</th>
+            <th>Hotel</th>
+            <th>Cuenta</th>
+            <th>Tipo</th>
+            <th>Tiempo</th>
+            <th>Trayecto asignado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
 </div>
 
 </main>
