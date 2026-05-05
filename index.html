@@ -6,77 +6,92 @@
 <title>MoveOPS</title>
 
 <link rel="stylesheet" href="styles.css">
-<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<!-- Librería Excel -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js" defer></script>
+
+<!-- Tu JS (IMPORTANTE: defer evita errores de DOM) -->
+<script src="app.js" defer></script>
 </head>
 
 <body>
 
 <header>
     <h1>Control de lanzadera</h1>
+
+    <!-- Usuario logueado (lo llena JS) -->
+    <span id="userInfo"></span>
+
+    <!-- Logout -->
+    <button onclick="logout()" class="btn-logout">
+        Cerrar sesión
+    </button>
 </header>
 
 <main>
 
 <!-- BOTÓN TOGGLE FORMULARIO -->
 <button id="toggleFormulario" class="btn-toggle">
-    Agregar unidad
+    ➕ Agregar unidad
 </button>
 
-<!-- FORMULARIO (COLAPSABLE) -->
+<!-- FORMULARIO -->
 <div id="contenedorFormulario" class="card form-collapsible hidden">
 
-<form id="formulario">
+    <form id="formulario">
 
-    <div class="form-grid">
+        <div class="form-grid">
 
-        <h3 class="full">Agregar unidad</h3>
+            <h3 class="full">Agregar unidad</h3>
 
-        <div class="field">
-            <label>Unidad</label>
-            <select id="unidad" required></select>
+            <div class="field">
+                <label>Unidad</label>
+                <select id="unidad" required></select>
+            </div>
+
+            <div class="field">
+                <label>Hora servicio</label>
+                <input type="time" id="hora" required>
+            </div>
+
+            <div class="field">
+                <label>Zona</label>
+                <select id="zona" required></select>
+            </div>
+
+            <div class="field">
+                <label>Hotel</label>
+                <input type="text" id="hotel" list="listaHoteles" placeholder="Buscar hotel..." required>
+                <datalist id="listaHoteles"></datalist>
+            </div>
+
+            <div class="field">
+                <label>Cuenta</label>
+                <select id="cuenta">
+                    <option value="Nexus">Nexus</option>
+                    <option value="Nexus DV">Nexus RF</option>
+                    <option value="Consolidados">Consolidados</option>
+                    <option value="Abordo">Abordo</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Tipo servicio</label>
+                <select id="servicio">
+                    <option value="SALIDA">Salida</option>
+                    <option value="LLEGADA">Llegada</option>
+                    <option value="INTERZONA">Interzona</option>
+                    <option value="ABIERTO">Abierto</option>
+                </select>
+            </div>
+
+            <button class="full" type="submit">
+                Agregar unidad
+            </button>
+
         </div>
 
-        <div class="field">
-            <label>Hora servicio</label>
-            <input type="time" id="hora" required>
-        </div>
-
-        <div class="field">
-            <label>Zona</label>
-            <select id="zona" required></select>
-        </div>
-
-        <div class="field">
-            <label>Hotel</label>
-            <input type="text" id="hotel" list="listaHoteles" placeholder="Buscar hotel..." required>
-            <datalist id="listaHoteles"></datalist>
-        </div>
-
-        <div class="field">
-            <label>Cuenta</label>
-            <select id="cuenta">
-                <option value="Nexus">Nexus</option>
-                <option value="Nexus DV">Nexus RF</option>
-                <option value="Consolidados">Consolidados</option>
-                <option value="Abordo">Abordo</option>
-            </select>
-        </div>
-
-        <div class="field">
-            <label>Tipo servicio</label>
-            <select id="servicio">
-                <option value="SALIDA">Salida</option>
-                <option value="LLEGADA">Llegada</option>
-                <option value="INTERZONA">Interzona</option>
-                <option value="ABIERTO">Abierto</option>
-            </select>
-        </div>
-
-        <button class="full" type="submit">Agregar unidad</button>
-
-    </div>
-
-</form>
+    </form>
 
 </div>
 
@@ -98,35 +113,35 @@
         <option value="Abordo">Abordo</option>
     </select>
 
-    <button id="btnExportar">Descargar Excel</button>
+    <button id="btnExportar">
+        Descargar Excel
+    </button>
 
 </div>
 
 <!-- TABLA -->
 <div class="table-container">
-<table id="tablaRegistros">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Registro</th>
-            <th>Unidad</th>
-            <th>Servicio</th>
-            <th>Zona</th>
-            <th>Hotel</th>
-            <th>Cuenta</th>
-            <th>Tipo</th>
-            <th>Tiempo</th>
-            <th>Trayecto asignado</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+    <table id="tablaRegistros">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Registro</th>
+                <th>Unidad</th>
+                <th>Servicio</th>
+                <th>Zona</th>
+                <th>Hotel</th>
+                <th>Cuenta</th>
+                <th>Tipo</th>
+                <th>Tiempo</th>
+                <th>Trayecto asignado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 </div>
 
 </main>
-
-<script src="app.js"></script>
 
 </body>
 </html>
