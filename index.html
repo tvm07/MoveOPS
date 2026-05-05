@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoveOPS</title>
+
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+</head>
+
+<body>
+
+<header>
+    <h1>Control de lanzadera</h1>
+</header>
+
+<main>
+
+<!-- BOTÓN TOGGLE FORMULARIO -->
+<button id="toggleFormulario" class="btn-toggle">
+    Agregar unidad
+</button>
+
+<!-- FORMULARIO (COLAPSABLE) -->
+<div id="contenedorFormulario" class="card form-collapsible hidden">
+
+<form id="formulario">
+
+    <div class="form-grid">
+
+        <h3 class="full">Agregar unidad</h3>
+
+        <div class="field">
+            <label>Unidad</label>
+            <select id="unidad" required></select>
+        </div>
+
+        <div class="field">
+            <label>Hora servicio</label>
+            <input type="time" id="hora" required>
+        </div>
+
+        <div class="field">
+            <label>Zona</label>
+            <select id="zona" required></select>
+        </div>
+
+        <div class="field">
+            <label>Hotel</label>
+            <input type="text" id="hotel" list="listaHoteles" placeholder="Buscar hotel..." required>
+            <datalist id="listaHoteles"></datalist>
+        </div>
+
+        <div class="field">
+            <label>Cuenta</label>
+            <select id="cuenta">
+                <option value="Nexus">Nexus</option>
+                <option value="Nexus DV">Nexus RF</option>
+                <option value="Consolidados">Consolidados</option>
+                <option value="Abordo">Abordo</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Tipo servicio</label>
+            <select id="servicio">
+                <option value="SALIDA">Salida</option>
+                <option value="LLEGADA">Llegada</option>
+                <option value="INTERZONA">Interzona</option>
+                <option value="ABIERTO">Abierto</option>
+            </select>
+        </div>
+
+        <button class="full" type="submit">Agregar unidad</button>
+
+    </div>
+
+</form>
+
+</div>
+
+<!-- TÍTULO -->
+<h2>Unidades activas</h2>
+
+<!-- FILTROS -->
+<div class="filtros">
+
+    <select id="filtroZona">
+        <option value="">Todas las zonas</option>
+    </select>
+
+    <select id="filtroCuenta">
+        <option value="">Todas las cuentas</option>
+        <option value="Nexus">Nexus</option>
+        <option value="Nexus DV">Nexus RF</option>
+        <option value="Consolidados">Consolidados</option>
+        <option value="Abordo">Abordo</option>
+    </select>
+
+    <button id="btnExportar">Descargar Excel</button>
+
+</div>
+
+<!-- TABLA -->
+<div class="table-container">
+<table id="tablaRegistros">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Registro</th>
+            <th>Unidad</th>
+            <th>Servicio</th>
+            <th>Zona</th>
+            <th>Hotel</th>
+            <th>Cuenta</th>
+            <th>Tipo</th>
+            <th>Tiempo</th>
+            <th>Trayecto asignado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+</div>
+
+</main>
+
+<script src="app.js"></script>
+
+</body>
+</html>

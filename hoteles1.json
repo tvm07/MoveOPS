@@ -1,0 +1,105 @@
+{
+  "Zona hotelera": [
+    { "nombre": "The Grand At Moon Palace Cancun", "tiempo_min": "00:40" },
+    { "nombre": "Hotel Dos Playas Cancún", "tiempo_min": "00:40" },
+    { "nombre": "Park Royal Beach Cancún", "tiempo_min": "00:40" },
+    { "nombre": "Occidental Costa Cancún", "tiempo_min": "00:40" },
+    { "nombre": "Wyndham Alltra Cancun", "tiempo_min": "00:40" },
+    { "nombre": "Riu Palace Peninsula", "tiempo_min": "00:40" },
+    { "nombre": "Moon Palace Cancun", "tiempo_min": "00:40" },
+    { "nombre": "Dreams Vista Cancun", "tiempo_min": "00:40" },
+    { "nombre": "Temptation Cancun Resort", "tiempo_min": "00:40" },
+    { "nombre": "Hotel NYX Cancun", "tiempo_min": "00:40" },
+    { "nombre": "Sandos Cancun", "tiempo_min": "00:40" },
+    { "nombre": "Courtyard Cancun Airport", "tiempo_min": "00:40" },
+    { "nombre": "Hotel Adhara Cancun", "tiempo_min": "00:40" },
+    { "nombre": "Hotel Soberanis Cancun", "tiempo_min": "00:40" },
+    { "nombre": "Hotel Antillano Cancun", "tiempo_min": "00:40" },
+    { "nombre": "Hotel Adhara Express", "tiempo_min": "00:40" },
+    { "nombre": "Riu Caribe", "tiempo_min": "00:40" },
+    { "nombre": "Hotel Plaza Caribe Cancun", "tiempo_min": "00:40" },
+    { "nombre": "Hotel Riviera Caribe Maya", "tiempo_min": "00:40" },
+    { "nombre": "Hotel Emporio Cancun", "tiempo_min": "00:40" },
+    { "nombre": "Hard Rock Hotel Cancun", "tiempo_min": "00:40" },
+    { "nombre": "Live Aqua Beach Resort Cancun", "tiempo_min": "00:40" },
+    { "nombre": "Krystal Cancún", "tiempo_min": "00:40" },
+    { "nombre": "Secrets The Vine Cancun", "tiempo_min": "00:40" },
+    { "nombre": "Breathless Cancun Soul Resort & Spa", "tiempo_min": "00:40" },
+    { "nombre": "Kempinski Hotel Cancún", "tiempo_min": "00:40" },
+    { "nombre": "Hilton Cancun Mar Caribe", "tiempo_min": "00:40" },
+    { "nombre": "Dom particular CUN", "tiempo_min": "00:40" },
+    { "nombre": "Base ABORDO", "tiempo_min": "00:40" },
+    { "nombre": "Dreams Sands Cancun Resort & Spa", "tiempo_min": "00:40" }
+  ],
+
+  "Playa del Carmen": [
+    { "nombre": "Hotel Marinelly", "tiempo_min": "01:00" },
+    { "nombre": "Aldea Thai condo", "tiempo_min": "01:00" },
+    { "nombre": "The Royal Haciendas All Suites Resort & Spa", "tiempo_min": "01:00" },
+    { "nombre": "Fairmont Mayakoba", "tiempo_min": "01:00" },
+    { "nombre": "Be Playa", "tiempo_min": "01:00" },
+    { "nombre": "Riu Palace México", "tiempo_min": "01:00" },
+    { "nombre": "Petit Lafitte Hotel", "tiempo_min": "01:00" },
+    { "nombre": "BlueBay Grand Esmeralda", "tiempo_min": "01:00" },
+    { "nombre": "Hotel Plaza Playa", "tiempo_min": "01:00" },
+    { "nombre": "Hotel el Punto", "tiempo_min": "01:00" },
+    { "nombre": "Riu Playacar", "tiempo_min": "01:00" },
+    { "nombre": "Grand Velas Riviera Maya", "tiempo_min": "01:00" },
+    { "nombre": "Hotel Xcaret Mexico", "tiempo_min": "01:00" },
+    { "nombre": "Hotel Xcaret Arte", "tiempo_min": "01:00" },
+    { "nombre": "Parque Xcaret", "tiempo_min": "01:00" },
+    { "nombre": "Ocean Riviera Paradise", "tiempo_min": "01:00" },
+    { "nombre": "Secrets Maroma Beach Riviera Cancun", "tiempo_min": "01:00" },
+    { "nombre": "Dom particular PDC", "tiempo_min": "01:00" },
+    { "nombre": "Nickelodeon Hotels & Resorts Riviera Maya", "tiempo_min": "01:00" }
+  ],
+
+  "Tulum": [
+    { "nombre": "Ahau Tulum", "tiempo_min": "03:00" },
+    { "nombre": "Posada Lamar", "tiempo_min": "03:00" },
+    { "nombre": "Villa Tulum Hotel", "tiempo_min": "03:00" },
+    { "nombre": "Coco Tulum", "tiempo_min": "03:00" },
+    { "nombre": "Casa Violeta", "tiempo_min": "03:00" },
+    { "nombre": "Amansala Resort Hotel", "tiempo_min": "03:00" },
+    { "nombre": "Zamas Hotel", "tiempo_min": "03:00" },
+    { "nombre": "Nomade Tulum", "tiempo_min": "03:00" },
+    { "nombre": "Be Tulum", "tiempo_min": "03:00" },
+    { "nombre": "Azulik", "tiempo_min": "03:00" },
+    { "nombre": "Dom particular TULUM", "tiempo_min": "03:00" },
+    { "nombre": "Papaya Playa Project", "tiempo_min": "03:00" }
+  ],
+
+  "Puerto Morelos": [
+    { "nombre": "Arrecifes suites", "tiempo_min": "00:45" },
+    { "nombre": "Desire Riviera Maya Pearl Resort", "tiempo_min": "00:45" },
+    { "nombre": "Excellence Riviera Cancun", "tiempo_min": "00:45" },
+    { "nombre": "Ocean Coral & Turquesa", "tiempo_min": "00:45" },
+    { "nombre": "Dom particular Pto Morelos", "tiempo_min": "00:45" },
+    { "nombre": "Azul Beach Resort Riviera Cancun", "tiempo_min": "00:45" }
+  ],
+
+  "Puerto Aventuras": [
+    { "nombre": "Villas del Mar, Puerto Aventuras", "tiempo_min": "02:30" },
+    { "nombre": "Hard Rock Hotel Riviera Maya", "tiempo_min": "02:30" },
+    { "nombre": "Barcelo Maya Palace", "tiempo_min": "02:30" },
+    { "nombre": "Dom particular Pto Aventuras", "tiempo_min": "02:30" },
+    { "nombre": "Catalonia Riviera Maya", "tiempo_min": "02:30" }
+  ],
+
+  "Playa Mujeres": [
+    { "nombre": "Secrets Playa Mujeres Golf & Spa Resort", "tiempo_min": "01:00" },
+    { "nombre": "Excellence Playa Mujeres", "tiempo_min": "01:00" },
+    { "nombre": "Majestic Elegance Playa Mujeres", "tiempo_min": "01:00" },
+    { "nombre": "Dom particular Playa Mujeres", "tiempo_min": "01:00" },
+    { "nombre": "Planet Hollywood Cancun", "tiempo_min": "01:00" }
+  ],
+
+  "Akumal": [
+    { "nombre": "Sunscape Akumal Beach Resort & Spa", "tiempo_min": "02:00" },
+    { "nombre": "Bahia Principe Grand Coba", "tiempo_min": "02:00" },
+    { "nombre": "Akumal Bay Beach & Wellness Resort", "tiempo_min": "02:00" },
+    { "nombre": "Secrets Akumal Riviera Maya", "tiempo_min": "02:00" },
+    { "nombre": "SDom particular Akumal", "tiempo_min": "02:00" },
+    { "nombre": "UNICO 20/87 Riviera Maya", "tiempo_min": "02:00" }
+  ]
+}
